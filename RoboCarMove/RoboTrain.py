@@ -120,3 +120,11 @@ def load_image(frame):
         # imshow expects values in the range [0, 1]
         img_tensor /= 255.
         return img_tensor    
+    
+def load_tfliteModel(modelName):
+    interpreter = tf.lite.Interpreter(model_path=modelName)
+    interpreter.allocate_tensors()
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+        
+    
